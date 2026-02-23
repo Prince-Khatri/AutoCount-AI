@@ -169,7 +169,7 @@ while(True):
         
         # Centre of object detected
         cx,cy = (x1+x2)//2,(y1+y2)//2
-        cv2.circle(img,(cx,cy),6,(144,144,255),cv2.FILLED) # if want to check if the circle deted is correct or not
+        # cv2.circle(img,(cx,cy),6,(144,144,255),cv2.FILLED) # if want to check if the circle deted is correct or not
 
         # Counting if it crosses the line
         if limits[0]<cx<limits[2] and limits[1]-15<cy<limits[1]+15 :
