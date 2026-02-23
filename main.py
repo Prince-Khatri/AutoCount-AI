@@ -165,11 +165,11 @@ while(True):
         bbox = int(x1), int(y1), int(x2-x1), int(y2-y1)
         
         cv2.rectangle(img, (x1,y1), (x2,y2),(255,0,0), thickness=2)
-        cvzone.putTextRect(img, f'{_id}', (max(x1,0),max(y1,35)), scale=2, thickness=6, offset=10, colorR = (255,255,0))
+        # cvzone.putTextRect(img, f'{_id}', (max(x1,0),max(y1,35)), scale=2, thickness=6, offset=10, colorR = (255,255,0))
         
         # Centre of object detected
         cx,cy = (x1+x2)//2,(y1+y2)//2
-        # cv2.circle(img,(cx,cy),6,(144,144,255),cv2.FILLED) # if want to check if the circle deted is correct or not
+        cv2.circle(img,(cx,cy),6,(144,144,255),cv2.FILLED) # if want to check if the circle deted is correct or not
 
         # Counting if it crosses the line
         if limits[0]<cx<limits[2] and limits[1]-15<cy<limits[1]+15 :
