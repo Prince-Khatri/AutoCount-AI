@@ -3,8 +3,8 @@ import cv2
 import cvzone
 import math
 from sort import *
-# BASE_PATH = "car-counter/assets/"
-BASE_PATH = "assets/"
+BASE_PATH = "car-counter/assets/"
+# BASE_PATH = "assets/"
 IMAGES_PATH = BASE_PATH+"images/"
 VIDEOS_PATH = BASE_PATH+"videos/"
 WEIGHTS_PATH = BASE_PATH+"Yolo-Weights/"
@@ -100,7 +100,7 @@ yolo_classes = {0: 'person',
  78: 'hair drier',
  79: 'toothbrush'}
 
-# Taking inference
+# Loading model
 model = YOLO(WEIGHTS_PATH+"yolov8n.pt")
 
 mask = cv2.imread(MASK_PATH+'car-mask.png')
