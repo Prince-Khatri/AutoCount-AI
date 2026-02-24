@@ -1,6 +1,6 @@
 # AutoCount-AI
 
-### Using YOLO v8 model to detect the count of moving objects on highway video.
+### Using YOLO v8 model to detect the count of moving objects on highway or elevators video.
 ----
 #### Stack Used:
 1. YOLO v8
@@ -17,10 +17,11 @@ source env/bin/activate # for linuxx/maxos
 # installing requirements
 pip install -r requirements.txt
 ```
-2. run main.py
+2. run file(car-counter.py / people-counter.py)
 
 ```
-python main.py
+python car-counter.py
+python people-counter.py
 ```
 ----
 #### Acknowledgement
