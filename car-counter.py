@@ -2,9 +2,10 @@ from ultralytics import YOLO
 import cv2
 import cvzone
 import math
+import numpy as np
 from sort import *
-BASE_PATH = "car-counter/assets/"
-# BASE_PATH = "assets/"
+# BASE_PATH = "car-counter/assets/"
+BASE_PATH = "assets/"
 IMAGES_PATH = BASE_PATH+"images/"
 VIDEOS_PATH = BASE_PATH+"videos/"
 WEIGHTS_PATH = BASE_PATH+"Yolo-Weights/"
@@ -12,10 +13,21 @@ MASK_PATH = BASE_PATH+"mask/"
 
 
 
-# Setting up video frame
+# Video input
 cap = cv2.VideoCapture(VIDEOS_PATH+'car2.mp4')
-cap.set(3,1280)
-cap.set(4,720)
+
+# Get properties from input video
+width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+fps = int(cap.get(cv2.CAP_PROP_FPS))
+
+#Video writer for docker
+out = cv2.VideoWriter(
+    "output.mp4",
+    cv2.VideoWriter_fourcc(*"mp4v"),
+    fps,
+    (width, height)
+)
 
 # inialising constants
 total_count=[]
@@ -113,6 +125,9 @@ limits = [100,350,850,200]
 
 while(True):
     sucess, img = cap.read()
+    # if not sucess:
+    #     break
+
     imgRegion = cv2.bitwise_and(img,mask)
     
     imgGraphics = cv2.imread(IMAGES_PATH+"car-counter-graphic.png", cv2.IMREAD_UNCHANGED)
@@ -181,7 +196,7 @@ while(True):
     cvzone.putTextRect(img, f"{len(total_count)}", (50,33), scale=2, thickness=4, offset=3, colorR = (205,199,149))
 
 
-
+    # out.write(img)
     cv2.imshow("Image", img)
     # cv2.imshow("MaskedImage", imgRegion)
 
@@ -190,5 +205,8 @@ while(True):
     #     # For escaping and cleaning the memory
     #     break
     cv2.waitKey(1)
+
+cap.release()
+out.release()
 
     

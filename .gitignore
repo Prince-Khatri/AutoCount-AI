@@ -1,2 +1,10 @@
 __pycache__
 assets/Yolo-Weights
+output.mp4
+xls_to_csv.py
+assets/.DS_Store
+car_speeds.csv
+car_speeds.xlsx
+env/
+.dockerignore
+Dockerfile
